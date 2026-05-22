@@ -58,6 +58,12 @@
     color: var(--text-light);
     padding-bottom: 12px;
   }
+  .hero-flag {
+    display: block;
+    margin: 4px auto 14px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
@@ -106,7 +112,7 @@
   .stage-1 .stage-dot { background: var(--stage1-accent); }
   .stage-2 .stage-dot { background: var(--stage2-accent); }
   .stage-3 .stage-dot { background: var(--stage3-accent); }
-  .stage-title h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; }
+  .stage-title h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; }
   .stage-range {
     font-size: 11px;
     font-weight: 700;
@@ -132,7 +138,7 @@
     align-items: baseline;
     gap: 10px;
     padding: 12px 16px 10px;
-    background: #fafafa;
+    background: #ececec;
     border-bottom: 1px solid var(--border);
   }
   .day-header .day-num {
@@ -463,6 +469,14 @@
 
   <header class="hero">
     <div class="kicker">Roteiro de Viagem</div>
+    <svg class="hero-flag" width="72" height="48" viewBox="0 0 72 48" aria-label="Itália" role="img">
+      <clipPath id="flagClip"><rect x="0" y="0" width="72" height="48" rx="4"/></clipPath>
+      <g clip-path="url(#flagClip)">
+        <rect x="0"  y="0" width="24" height="48" fill="#009246"/>
+        <rect x="24" y="0" width="24" height="48" fill="#FFFFFF"/>
+        <rect x="48" y="0" width="24" height="48" fill="#CE2B37"/>
+      </g>
+    </svg>
     <h1>Puglia</h1>
     <div class="dates">4 — 14 de Junho · Itália</div>
   </header>
