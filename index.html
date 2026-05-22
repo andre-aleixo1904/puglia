@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Roteiro Puglia · 4–14 Junho</title>
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#FEC437" />
+<meta name="description" content="Roteiro de viagem a Puglia · 4-14 Junho" />
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Puglia" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #fafaf7;
+    color: #273240;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :root {
+    --text-dark: #273240;
+    --text-mid: #5a6573;
+    --text-light: #9c9c9c;
+    --bg-app: #fafaf7;
+    --white: #ffffff;
+    --border: #e6e6e6;
+    --stage1-bg: #fdeceb;
+    --stage1-accent: #e85b53;
+    --stage1-soft: #faf3f3;
+    --stage2-bg: #e8e5f5;
+    --stage2-accent: #5e57b8;
+    --stage2-soft: #f3f1fb;
+    --stage3-bg: #f4e3f0;
+    --stage3-accent: #b34a9c;
+    --stage3-soft: #faeef7;
+  }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+
+  /* HERO */
+  .hero { text-align: center; padding: 16px 0 36px; }
+  .hero .kicker {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    padding-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .hero .dates { font-size: 15px; color: var(--text-mid); font-weight: 500; }
+
+  /* INFO STRIP */
+  .info-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 32px;
+  }
+  .info-cell { padding: 8px; text-align: center; }
+  .info-cell .ic-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .info-cell .ic-value { font-size: 13px; font-weight: 700; color: var(--text-dark); line-height: 1.3; }
+  .info-cell .ic-sub { font-size: 11px; color: var(--text-mid); margin-top: 2px; }
+
+  /* STAGE */
+  .stage {
+    border-radius: 18px;
+    padding: 20px 14px 16px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .stage-1 { background: var(--stage1-soft); border-color: var(--stage1-bg); }
+  .stage-2 { background: var(--stage2-soft); border-color: var(--stage2-bg); }
+  .stage-3 { background: var(--stage3-soft); border-color: var(--stage3-bg); }
+  .stage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 0 4px;
+    flex-wrap: wrap;
+  }
+  .stage-title { display: flex; align-items: center; gap: 10px; }
+  .stage-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .stage-1 .stage-dot { background: var(--stage1-accent); }
+  .stage-2 .stage-dot { background: var(--stage2-accent); }
+  .stage-3 .stage-dot { background: var(--stage3-accent); }
+  .stage-title h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; }
+  .stage-range {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    background: var(--white);
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  /* DAY */
+  .day {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 16px 10px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-header .day-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+  }
+  .day-header .day-month {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+  .day-header .day-week {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-left: auto;
+    font-weight: 600;
+  }
+  .day-body { padding: 8px 8px 12px; display: flex; flex-direction: column; gap: 2px; }
+
+  /* ENTRY (hotels, flights, rent-a-car) */
+  .entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    min-height: 48px;
+    border-radius: 8px;
+  }
+  .entry-icon {
+    flex: 0 0 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .entry-content { flex: 1; min-width: 0; }
+  .entry-title { font-size: 13px; font-weight: 600; color: var(--text-dark); overflow: hidden; text-overflow: ellipsis; }
+  .entry-sub { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+
+  /* ACTIVITY (places to visit, draggable) */
+  .activity {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 4px;
+    min-height: 56px;
+    border-radius: 8px;
+    background: var(--white);
+    transition: background 0.15s;
+  }
+  .activity.dragging { opacity: 0.3; background: #f5f5f5; }
+  .activity.drag-clone {
+    position: fixed !important;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    background: var(--white) !important;
+    border: 1px solid var(--border);
+    opacity: 1 !important;
+  }
+  .drag-handle {
+    flex: 0 0 32px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bcbcbc;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .drag-handle:active { cursor: grabbing; color: var(--text-dark); }
+  .drag-handle svg { width: 14px; height: 18px; }
+  .arrow {
+    flex: 0 0 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b0b0b0;
+    font-size: 14px;
+  }
+  .activity-meta { flex: 1; min-width: 0; }
+  .a-distance { font-size: 11px; color: var(--text-light); margin-bottom: 1px; }
+  .a-distance.calculating { font-style: italic; opacity: 0.7; }
+  .a-place { font-size: 13px; font-weight: 600; color: var(--text-dark); overflow: hidden; text-overflow: ellipsis; }
+  .a-note {
+    font-size: 11px;
+    color: var(--text-mid);
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    padding-left: 8px;
+    border-left: 2px solid var(--border);
+  }
+
+  /* ACTION BUTTONS — always visible, touch-friendly */
+  .map-link, .menu-btn, .edit-btn {
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text-mid);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-link {
+    height: 44px;
+    padding: 0 10px;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .map-link svg { width: 12px; height: 12px; }
+  .map-link:active { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); }
+  .menu-btn, .edit-btn { width: 44px; height: 44px; }
+  .menu-btn svg, .edit-btn svg { width: 16px; height: 16px; }
+  .menu-btn:active, .edit-btn:active { background: #f0f0f0; }
+
+  /* MENU POPOVER */
+  .menu-popover {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 6px;
+    min-width: 180px;
+    z-index: 1001;
+    animation: popIn 0.12s ease-out;
+  }
+  @keyframes popIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  .menu-item:hover, .menu-item:active { background: #f5f5f5; }
+  .menu-item.danger { color: #e85b53; }
+  .menu-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  }
+
+  /* INLINE EDIT FORM */
+  .inline-edit {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 2px 0;
+    min-width: 0;
+  }
+  .inline-edit input {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    width: 100%;
+  }
+  .inline-edit input:focus { border-color: var(--text-dark); }
+  .inline-edit input.ie-sub { font-size: 12px; color: var(--text-mid); }
+  .inline-edit textarea, .add-row textarea {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-dark);
+    outline: none;
+    resize: vertical;
+    min-height: 60px;
+    width: 100%;
+    line-height: 1.4;
+  }
+  .inline-edit textarea:focus, .add-row textarea:focus { border-color: var(--text-dark); }
+  .inline-edit .ie-actions { display: flex; gap: 6px; margin-top: 2px; flex-wrap: wrap; }
+  .inline-edit .ie-actions button {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text-mid);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 36px;
+  }
+  .inline-edit .ie-actions .ie-save { background: var(--text-dark); color: var(--white); border-color: var(--text-dark); }
+  .inline-edit .ie-actions .ie-reset { background: transparent; border-color: #e85b53; color: #e85b53; margin-left: auto; }
+
+  /* ADD BUTTON */
+  .add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    border: 1px dashed #c5c5c5;
+    background: transparent;
+    color: var(--text-mid);
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 6px 4px 0;
+    width: calc(100% - 8px);
+    min-height: 48px;
+  }
+  .add-btn:active { border-color: var(--text-dark); color: var(--text-dark); background: #fafafa; }
+  .add-btn .plus { font-size: 16px; line-height: 1; }
+  .add-row { display: none; gap: 8px; margin: 8px 4px 0; padding: 12px; background: #fafafa; border-radius: 10px; border: 1px solid var(--border); flex-direction: column; }
+  .add-row.open { display: flex; }
+  .add-row input {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+  }
+  .add-row input:focus { border-color: var(--text-dark); }
+  .add-row .actions { display: flex; gap: 6px; }
+  .add-row .save-btn {
+    flex: 1;
+    border: none;
+    background: var(--text-dark);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .add-row .cancel-btn {
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text-mid);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    min-height: 44px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* DESKTOP TUNE-UPS */
+  @media (min-width: 720px) {
+    .container { padding: 48px 24px 80px; }
+    .hero h1 { font-size: 56px; }
+    .info-strip { grid-template-columns: repeat(4, 1fr); padding: 18px; }
+    .stage { padding: 28px 24px 24px; }
+    .day-body { padding: 12px 16px 16px; }
+  }
+
+  /* COMPACT MOBILE */
+  @media (max-width: 380px) {
+    .map-link span { display: none; }
+    .map-link { padding: 0; width: 44px; }
+    .day-header .day-week { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="kicker">Roteiro de Viagem</div>
+    <h1>Puglia</h1>
+    <div class="dates">4 — 14 de Junho · Itália</div>
+  </header>
+
+  <div class="info-strip">
+    <div class="info-cell"><div class="ic-label">Voo Ida</div><div class="ic-value">Brindisi · 4 Jun</div><div class="ic-sub">Chegada 16h40</div></div>
+    <div class="info-cell"><div class="ic-label">Voo Volta</div><div class="ic-value">Bari · 14 Jun</div><div class="ic-sub">Partida 7h55</div></div>
+    <div class="info-cell"><div class="ic-label">Rent-a-car</div><div class="ic-value">Locauto</div><div class="ic-sub">Brindisi → Bari</div></div>
+    <div class="info-cell"><div class="ic-label">Estadias</div><div class="ic-value">3 hotéis</div><div class="ic-sub">10 noites</div></div>
+  </div>
+
+  <!-- STAGE 1: OTRANTO -->
+  <section class="stage stage-1">
+    <div class="stage-header">
+      <div class="stage-title"><div class="stage-dot"></div><h2>Otranto · Sanlu Hotel</h2></div>
+      <div class="stage-range">4 — 10 Jun</div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">4</span><span class="day-month">Junho</span><span class="day-week">Quinta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">✈</div><div class="entry-content"><div class="entry-title">Brindisi · Aeroporto</div><div class="entry-sub">Chegada 16h40</div></div></div>
+        <div class="entry"><div class="entry-icon">🚗</div><div class="entry-content"><div class="entry-title">Brindisi · Rent-a-car Locauto</div><div class="entry-sub">Levantamento no aeroporto</div></div></div>
+        <div class="activities" data-day="4-jun"></div>
+        <button class="add-btn" data-target="4-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="4-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+        <div class="entry" data-no-map><div class="entry-icon">🛌</div><div class="entry-content"><div class="entry-title">Descanso</div></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">5</span><span class="day-month">Junho</span><span class="day-week">Sexta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div><div class="entry-sub">Check-in 14h00 — 23h30</div></div></div>
+        <div class="activities" data-day="5-jun"></div>
+        <button class="add-btn" data-target="5-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="5-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">6</span><span class="day-month">Junho</span><span class="day-week">Sábado</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div></div></div>
+        <div class="activities" data-day="6-jun"></div>
+        <button class="add-btn" data-target="6-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="6-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">7</span><span class="day-month">Junho</span><span class="day-week">Domingo</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div></div></div>
+        <div class="activities" data-day="7-jun"></div>
+        <button class="add-btn" data-target="7-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="7-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">8</span><span class="day-month">Junho</span><span class="day-week">Segunda</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div></div></div>
+        <div class="activities" data-day="8-jun"></div>
+        <button class="add-btn" data-target="8-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="8-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">9</span><span class="day-month">Junho</span><span class="day-week">Terça</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div></div></div>
+        <div class="activities" data-day="9-jun"></div>
+        <button class="add-btn" data-target="9-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="9-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">10</span><span class="day-month">Junho</span><span class="day-week">Quarta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Sanlu Hotel · Otranto</div><div class="entry-sub">Check-out até 10h00</div></div></div>
+        <div class="activities" data-day="10-jun-otr"></div>
+        <button class="add-btn" data-target="10-jun-otr"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="10-jun-otr"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 2: CASALINI -->
+  <section class="stage stage-2">
+    <div class="stage-header">
+      <div class="stage-title"><div class="stage-dot"></div><h2>Casalini · Tenuta Sicilia</h2></div>
+      <div class="stage-range">10 — 13 Jun</div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">10</span><span class="day-month">Junho</span><span class="day-week">Quarta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Tenuta Sicilia · One-Bedroom Villa</div><div class="entry-sub">Casalini · Check-in 14h00 — 20h00</div></div></div>
+        <div class="activities" data-day="10-jun-cas"></div>
+        <button class="add-btn" data-target="10-jun-cas"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="10-jun-cas"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">11</span><span class="day-month">Junho</span><span class="day-week">Quinta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Tenuta Sicilia · One-Bedroom Villa</div><div class="entry-sub">Casalini</div></div></div>
+        <div class="activities" data-day="11-jun"></div>
+        <button class="add-btn" data-target="11-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="11-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">12</span><span class="day-month">Junho</span><span class="day-week">Sexta</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Tenuta Sicilia · One-Bedroom Villa</div><div class="entry-sub">Casalini</div></div></div>
+        <div class="activities" data-day="12-jun"></div>
+        <button class="add-btn" data-target="12-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="12-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">13</span><span class="day-month">Junho</span><span class="day-week">Sábado</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Tenuta Sicilia · One-Bedroom Villa</div><div class="entry-sub">Check-out 10h00 — 11h00</div></div></div>
+        <div class="activities" data-day="13-jun-cas"></div>
+        <button class="add-btn" data-target="13-jun-cas"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="13-jun-cas"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 3: BITONTO -->
+  <section class="stage stage-3">
+    <div class="stage-header">
+      <div class="stage-title"><div class="stage-dot"></div><h2>Bitonto · Largo Teatro B&amp;B</h2></div>
+      <div class="stage-range">13 — 14 Jun</div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">13</span><span class="day-month">Junho</span><span class="day-week">Sábado</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Largo Teatro Bed &amp; Breakfast</div><div class="entry-sub">Bitonto · Check-in 14h00 — 23h30</div></div></div>
+        <div class="activities" data-day="13-jun-bit"></div>
+        <button class="add-btn" data-target="13-jun-bit"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="13-jun-bit"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+        <div class="entry" data-no-map><div class="entry-icon">🛌</div><div class="entry-content"><div class="entry-title">Descanso</div></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header"><span class="day-num">14</span><span class="day-month">Junho</span><span class="day-week">Domingo</span></div>
+      <div class="day-body">
+        <div class="entry"><div class="entry-icon">🏨</div><div class="entry-content"><div class="entry-title">Largo Teatro Bed &amp; Breakfast</div><div class="entry-sub">Check-out 3h00 — 11h30</div></div></div>
+        <div class="activities" data-day="14-jun"></div>
+        <button class="add-btn" data-target="14-jun"><span class="plus">+</span> Adicionar destino</button>
+        <div class="add-row" data-form="14-jun"><input type="text" class="place" placeholder="Para onde queres ir?" /><textarea class="note" placeholder="Notas (opcional)" rows="2"></textarea><div class="actions"><button class="save-btn">Guardar</button><button class="cancel-btn">Cancelar</button></div></div>
+        <div class="entry"><div class="entry-icon">🚗</div><div class="entry-content"><div class="entry-title">Bari Aeroporto · Rent-a-car Locauto</div><div class="entry-sub">Devolução · 5 h</div></div></div>
+        <div class="entry"><div class="entry-icon">✈</div><div class="entry-content"><div class="entry-title">Bari · Aeroporto</div><div class="entry-sub">Partida 7h55</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Roteiro Puglia · Junho 2026</footer>
+</div>
+
+<script>
+  /* ============= ICONS ============= */
+  const PIN_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a5 5 0 0 0-5 5c0 3.9 5 11 5 11s5-7.1 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>';
+  const PENCIL_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M11.7 1.3a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4l-9 9a1 1 0 0 1-.5.3l-3 .7a.5.5 0 0 1-.6-.6l.7-3a1 1 0 0 1 .3-.5l9-9zM11 3.4 12.6 5l1-1L12 2.4l-1 1z"/></svg>';
+  const DOTS_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="3" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="13" cy="8" r="1.5"/></svg>';
+  const GRIP_SVG = '<svg viewBox="0 0 8 14" fill="currentColor"><circle cx="2" cy="2" r="1.2"/><circle cx="6" cy="2" r="1.2"/><circle cx="2" cy="7" r="1.2"/><circle cx="6" cy="7" r="1.2"/><circle cx="2" cy="12" r="1.2"/><circle cx="6" cy="12" r="1.2"/></svg>';
+  const TRASH_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M6 2h4a1 1 0 0 1 1 1v1h3v1h-1v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5H2V4h3V3a1 1 0 0 1 1-1zm1 2h2V3H7v1zM4 5v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5H4zm2 2h1v6H6V7zm3 0h1v6H9V7z"/></svg>';
+  const RESET_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 3V1L4 4l4 3V5a4 4 0 1 1-4 4H2.5a5.5 5.5 0 1 0 5.5-6z"/></svg>';
+
+  /* ============= STORAGE ============= */
+  const STORAGE_KEY = 'puglia-roteiro-v3';
+  const GEO_CACHE_KEY = 'puglia-geocache-v1';
+  const SKIP_TITLES = ['Descanso'];
+
+  const SEED = {
+    '4-jun':       [{ place: 'Sanlu Hotel · Otranto', dist: '78 km · 1 h de viagem' }],
+    '10-jun-otr':  [{ place: 'Tenuta Sicilia · One-Bedroom Villa', dist: '118 km · 1 h 30 de viagem' }],
+    '11-jun':      [{ place: 'Alberobello', dist: '24 km · 35 min de viagem' }],
+    '12-jun':      [
+      { place: 'Ostuni', dist: '9 km · 12 min de viagem' },
+      { place: 'Spiaggia Torre Guaceto', dist: '32 km · 32 min de viagem' }
+    ],
+    '13-jun-cas':  [
+      { place: 'Monopoli', dist: '38 km · 40 min de viagem' },
+      { place: 'Polignano a Mare', dist: '46 km · 45 min de viagem' },
+      { place: 'Lama Monachile', dist: '46 km · 45 min de viagem' },
+      { place: 'B&B T57 · Bitonto', dist: '100 km · 1 h 30 de viagem' }
+    ],
+    '14-jun':      [{ place: 'Aeroporto Bari', dist: '10 km · 15 min de viagem' }]
+  };
+
+  const KNOWN_LOCATIONS = {
+    'sanlu hotel · otranto': { lat: 40.1442, lon: 18.4810 },
+    'tenuta sicilia · one-bedroom villa': { lat: 40.8084, lon: 17.3450 },
+    'largo teatro bed & breakfast': {
+      lat: 41.106292, lon: 16.6920525,
+      mapUrl: 'https://www.google.com/maps/place/Largo+Teatro+Bed+%26+Breakfast/@41.106292,16.6920525,17z/data=!4m10!3m9!1s0x1347f1430899170f:0x374ea173a6138193!5m3!1s2026-06-13!4m1!1i2!8m2!3d41.106292!4d16.6920525!16s%2Fg%2F11w3f8tztt'
+    },
+    'brindisi · aeroporto': { lat: 40.6583, lon: 17.9472 },
+    'bari · aeroporto': { lat: 41.1389, lon: 16.7606 },
+    'aeroporto bari': { lat: 41.1389, lon: 16.7606 },
+    'brindisi · rent-a-car locauto': { lat: 40.6583, lon: 17.9472 },
+    'bari aeroporto · rent-a-car locauto': { lat: 41.1389, lon: 16.7606 },
+    'alberobello': { lat: 40.7833, lon: 17.2333 },
+    'ostuni': { lat: 40.7311, lon: 17.5781 },
+    'spiaggia torre guaceto': { lat: 40.7164, lon: 17.7878 },
+    'monopoli': { lat: 40.9531, lon: 17.3056 },
+    'polignano a mare': { lat: 41.0011, lon: 17.2178 },
+    'lama monachile': { lat: 41.0010, lon: 17.2185 },
+    'b&b t57 · bitonto': {
+      lat: 41.106292, lon: 16.6920525,
+      mapUrl: 'https://www.google.com/maps/place/Largo+Teatro+Bed+%26+Breakfast/@41.106292,16.6920525,17z/data=!4m10!3m9!1s0x1347f1430899170f:0x374ea173a6138193!5m3!1s2026-06-13!4m1!1i2!8m2!3d41.106292!4d16.6920525!16s%2Fg%2F11w3f8tztt'
+    }
+  };
+
+  function loadData() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (raw && raw.days) return { days: raw.days, overrides: raw.overrides || {} };
+    } catch (e) {}
+    try {
+      const v2 = JSON.parse(localStorage.getItem('puglia-roteiro-v2'));
+      if (v2 && v2.days) return { days: v2.days, overrides: v2.overrides || {} };
+    } catch (e) {}
+    try {
+      const v1 = JSON.parse(localStorage.getItem('puglia-roteiro-v1'));
+      if (v1) return { days: v1, overrides: {} };
+    } catch (e) {}
+    return { days: {}, overrides: {} };
+  }
+  function saveData() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+  function loadGeoCache() {
+    let stored = {};
+    try { stored = JSON.parse(localStorage.getItem(GEO_CACHE_KEY)) || {}; } catch (e) {}
+    /* KNOWN_LOCATIONS wins over stored cache (curated source of truth) */
+    return Object.assign({}, stored, KNOWN_LOCATIONS);
+  }
+  function saveGeoCache() { localStorage.setItem(GEO_CACHE_KEY, JSON.stringify(geoCache)); }
+
+  let data = loadData();
+  let geoCache = loadGeoCache();
+
+  /* Seed any day that has no user data yet */
+  function ensureSeeded() {
+    for (const day in SEED) {
+      if (!data.days[day]) data.days[day] = SEED[day].map(x => ({ ...x }));
+    }
+    saveData();
+  }
+
+  /* ============= UTILS ============= */
+  function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+  function escapeAttr(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function normalizeName(s) { return (s || '').toLowerCase().replace(/\s+/g, ' ').trim(); }
+  function buildMapUrl(q) {
+    const known = geoCache[normalizeName(q)];
+    if (known && known.mapUrl) return known.mapUrl;
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+  }
+
+  /* ============= GEOCODING & ROUTING ============= */
+  async function geocode(name) {
+    const key = normalizeName(name);
+    if (!key) return null;
+    if (geoCache[key]) return geoCache[key];
+    const cleaned = name.replace(/·/g, ' ').replace(/\s+/g, ' ').trim();
+    const tries = [cleaned, cleaned + ', Puglia, Italy', cleaned + ', Italy'];
+    for (const q of tries) {
+      try {
+        const res = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q), { headers: { 'Accept-Language': 'pt' } });
+        const j = await res.json();
+        if (j && j.length) {
+          const r = { lat: parseFloat(j[0].lat), lon: parseFloat(j[0].lon) };
+          geoCache[key] = r;
+          saveGeoCache();
+          return r;
+        }
+      } catch (e) {}
+    }
+    return null;
+  }
+  async function getRoute(from, to) {
+    try {
+      const res = await fetch('https://router.project-osrm.org/route/v1/driving/' + from.lon + ',' + from.lat + ';' + to.lon + ',' + to.lat + '?overview=false');
+      const j = await res.json();
+      if (!j.routes || !j.routes.length) return null;
+      return { distance: j.routes[0].distance, duration: j.routes[0].duration };
+    } catch (e) { return null; }
+  }
+  function formatRoute(route) {
+    const km = route.distance / 1000;
+    const kmStr = km < 10 ? km.toFixed(1).replace('.', ',') : Math.round(km).toString();
+    const totalMin = Math.round(route.duration / 60);
+    let timeStr;
+    if (totalMin < 60) timeStr = totalMin + ' min';
+    else {
+      const h = Math.floor(totalMin / 60);
+      const m = totalMin % 60;
+      timeStr = m > 0 ? h + ' h ' + m + ' min' : h + ' h';
+    }
+    return kmStr + ' km · ' + timeStr + ' de viagem';
+  }
+
+  /* ============= STATIC IDS & OVERRIDES (for entries) ============= */
+  function initStaticIds() {
+    let n = 0;
+    document.querySelectorAll('.entry').forEach(entry => {
+      if (entry.dataset.id) return;
+      entry.dataset.id = 'entry-' + (++n);
+      const titleEl = entry.querySelector('.entry-title');
+      const subEl = entry.querySelector('.entry-sub');
+      entry.dataset.origTitle = titleEl ? titleEl.textContent : '';
+      entry.dataset.origSub = subEl ? subEl.textContent : '';
+    });
+  }
+  function applyEntryValues(entry, title, sub) {
+    const content = entry.querySelector('.entry-content');
+    if (!content) return;
+    let titleEl = content.querySelector('.entry-title');
+    if (!titleEl) { titleEl = document.createElement('div'); titleEl.className = 'entry-title'; content.appendChild(titleEl); }
+    titleEl.textContent = title;
+    let subEl = content.querySelector('.entry-sub');
+    if (sub) {
+      if (!subEl) { subEl = document.createElement('div'); subEl.className = 'entry-sub'; content.appendChild(subEl); }
+      subEl.textContent = sub;
+    } else if (subEl) subEl.remove();
+  }
+  function applyEntryOverrides() {
+    document.querySelectorAll('.entry').forEach(entry => {
+      const ov = data.overrides[entry.dataset.id];
+      if (ov) applyEntryValues(entry, ov.title, ov.sub || '');
+    });
+  }
+
+  /* ============= ACTIVITY DATA HELPERS ============= */
+  function getActivityData(el) {
+    const day = el.dataset.day;
+    const idx = parseInt(el.dataset.idx, 10);
+    if (!day || isNaN(idx) || !data.days[day]) return null;
+    return data.days[day][idx];
+  }
+  function setActivityData(el, item) {
+    const day = el.dataset.day;
+    const idx = parseInt(el.dataset.idx, 10);
+    if (!day || isNaN(idx)) return;
+    if (!data.days[day]) data.days[day] = [];
+    data.days[day][idx] = item;
+    saveData();
+  }
+  function removeActivity(day, idx) {
+    if (!data.days[day]) return;
+    data.days[day].splice(idx, 1);
+    saveData();
+    renderDay(day);
+  }
+
+  /* ============= LOCATION LOOKUP ============= */
+  function getLocationName(el) {
+    if (el.classList.contains('entry')) {
+      if (el.dataset.noMap !== undefined) return null;
+      const t = el.querySelector('.entry-title');
+      if (!t) return null;
+      const v = t.textContent.trim();
+      if (SKIP_TITLES.includes(v)) return null;
+      return v;
+    }
+    if (el.classList.contains('activity')) {
+      const p = el.querySelector('.a-place');
+      return p ? p.textContent.trim() : null;
+    }
+    return null;
+  }
+  function findPreviousLocation(currentEl) {
+    const all = Array.from(document.querySelectorAll('.entry, .activity'));
+    const idx = all.indexOf(currentEl);
+    if (idx <= 0) return null;
+    for (let i = idx - 1; i >= 0; i--) {
+      const loc = getLocationName(all[i]);
+      if (loc) return loc;
+    }
+    return null;
+  }
+
+  async function recalculateDistance(activityEl) {
+    if (!activityEl) return;
+    const placeEl = activityEl.querySelector('.a-place');
+    if (!placeEl) return;
+    const place = placeEl.textContent.trim();
+    if (!place) return;
+    const distEl = activityEl.querySelector('.a-distance');
+    if (distEl) { distEl.textContent = 'A calcular distância…'; distEl.classList.add('calculating'); }
+    const prev = findPreviousLocation(activityEl);
+    if (!prev) {
+      if (distEl) distEl.remove();
+      const item = getActivityData(activityEl);
+      if (item) { item.dist = ''; saveData(); }
+      return;
+    }
+    try {
+      const from = await geocode(prev);
+      const to = await geocode(place);
+      if (!from || !to) throw new Error('geo');
+      const route = await getRoute(from, to);
+      if (!route) throw new Error('route');
+      const dist = formatRoute(route);
+      updateActivityDistance(activityEl, dist);
+      const item = getActivityData(activityEl);
+      if (item) { item.dist = dist; saveData(); }
+    } catch (e) {
+      updateActivityDistance(activityEl, '');
+      const item = getActivityData(activityEl);
+      if (item) { item.dist = ''; saveData(); }
+    }
+  }
+  function updateActivityDistance(el, dist) {
+    const meta = el.querySelector('.activity-meta');
+    if (!meta) return;
+    let distEl = meta.querySelector('.a-distance');
+    if (dist) {
+      if (!distEl) { distEl = document.createElement('div'); distEl.className = 'a-distance'; meta.insertBefore(distEl, meta.firstChild); }
+      distEl.textContent = dist;
+      distEl.classList.remove('calculating');
+    } else if (distEl) distEl.remove();
+  }
+
+  /* ============= RENDER ============= */
+  function renderDay(day) {
+    const container = document.querySelector('.activities[data-day="' + day + '"]');
+    if (!container) return;
+    const items = data.days[day] || [];
+    container.innerHTML = '';
+    items.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'activity';
+      div.dataset.day = day;
+      div.dataset.idx = idx;
+      const distHtml = item.dist ? '<div class="a-distance">' + escapeHtml(item.dist) + '</div>' : '';
+      const placeHtml = '<div class="a-place">' + escapeHtml(item.place) + '</div>';
+      const noteHtml = item.note ? '<div class="a-note">' + escapeHtml(item.note) + '</div>' : '';
+      const mapHtml = '<a class="map-link" href="' + escapeAttr(buildMapUrl(item.place)) + '" target="_blank" rel="noopener">' + PIN_SVG + '<span>Mapa</span></a>';
+      div.innerHTML =
+        '<div class="drag-handle" aria-label="Reordenar">' + GRIP_SVG + '</div>' +
+        '<div class="arrow">↳</div>' +
+        '<div class="activity-meta">' + distHtml + placeHtml + noteHtml + '</div>' +
+        mapHtml +
+        '<button class="menu-btn" type="button" aria-label="Opções">' + DOTS_SVG + '</button>';
+      container.appendChild(div);
+    });
+  }
+  function renderAll() {
+    document.querySelectorAll('.activities').forEach(c => renderDay(c.dataset.day));
+    attachEntryButtons();
+  }
+
+  /* Entries: map link + edit button (always visible) */
+  function attachEntryButtons() {
+    document.querySelectorAll('.entry').forEach(entry => {
+      if (entry.classList.contains('editing')) return;
+      entry.querySelectorAll('.map-link, .edit-btn').forEach(b => b.remove());
+      const titleEl = entry.querySelector('.entry-title');
+      const title = titleEl ? titleEl.textContent.trim() : '';
+      const showMap = title && !SKIP_TITLES.includes(title) && entry.dataset.noMap === undefined;
+      if (showMap) {
+        const a = document.createElement('a');
+        a.className = 'map-link';
+        a.href = buildMapUrl(title);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = PIN_SVG + '<span>Mapa</span>';
+        entry.appendChild(a);
+      }
+      const b = document.createElement('button');
+      b.className = 'edit-btn';
+      b.type = 'button';
+      b.title = 'Editar';
+      b.innerHTML = PENCIL_SVG;
+      entry.appendChild(b);
+    });
+  }
+
+  /* ============= EDIT (entries + activities) ============= */
+  function startEditEntry(entry) {
+    if (entry.classList.contains('editing')) return;
+    entry.classList.add('editing');
+    const title = entry.querySelector('.entry-title')?.textContent || '';
+    const sub = entry.querySelector('.entry-sub')?.textContent || '';
+    const hasOverride = !!data.overrides[entry.dataset.id];
+
+    const content = entry.querySelector('.entry-content');
+    const mapLink = entry.querySelector('.map-link');
+    const editBtn = entry.querySelector('.edit-btn');
+
+    const form = document.createElement('div');
+    form.className = 'inline-edit';
+    form.innerHTML =
+      '<input class="ie-title" placeholder="Título" value="' + escapeAttr(title) + '" />' +
+      '<input class="ie-sub" placeholder="Detalhe (opcional)" value="' + escapeAttr(sub) + '" />' +
+      '<div class="ie-actions"><button class="ie-save">Guardar</button><button class="ie-cancel">Cancelar</button>' +
+      (hasOverride ? '<button class="ie-reset">Repor</button>' : '') + '</div>';
+
+    if (content) content.style.display = 'none';
+    if (mapLink) mapLink.style.display = 'none';
+    if (editBtn) editBtn.style.display = 'none';
+    entry.appendChild(form);
+    form.querySelector('input').focus();
+
+    const close = () => {
+      form.remove();
+      if (content) content.style.display = '';
+      if (mapLink) mapLink.style.display = '';
+      if (editBtn) editBtn.style.display = '';
+      entry.classList.remove('editing');
+    };
+    const save = () => {
+      const newTitle = form.querySelector('.ie-title').value.trim();
+      const newSub = form.querySelector('.ie-sub').value.trim();
+      if (!newTitle) { form.querySelector('.ie-title').focus(); return; }
+      data.overrides[entry.dataset.id] = { title: newTitle, sub: newSub };
+      saveData();
+      applyEntryValues(entry, newTitle, newSub);
+      close();
+      attachEntryButtons();
+    };
+    const reset = () => {
+      delete data.overrides[entry.dataset.id];
+      saveData();
+      applyEntryValues(entry, entry.dataset.origTitle, entry.dataset.origSub);
+      close();
+      attachEntryButtons();
+    };
+    form.querySelector('.ie-save').addEventListener('click', save);
+    form.querySelector('.ie-cancel').addEventListener('click', close);
+    const r = form.querySelector('.ie-reset');
+    if (r) r.addEventListener('click', reset);
+    form.querySelectorAll('input').forEach(i => i.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); save(); }
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+    }));
+  }
+
+  function startEditActivity(activity) {
+    if (activity.classList.contains('editing')) return;
+    activity.classList.add('editing');
+    const item = getActivityData(activity) || {};
+    const place = item.place || '';
+    const note = item.note || '';
+    const meta = activity.querySelector('.activity-meta');
+    const arrow = activity.querySelector('.arrow');
+    const handle = activity.querySelector('.drag-handle');
+    const mapLink = activity.querySelector('.map-link');
+    const menuBtn = activity.querySelector('.menu-btn');
+
+    const form = document.createElement('div');
+    form.className = 'inline-edit';
+    form.innerHTML =
+      '<input class="ie-place" placeholder="Local" value="' + escapeAttr(place) + '" />' +
+      '<textarea class="ie-note" placeholder="Notas (opcional)" rows="2">' + escapeHtml(note) + '</textarea>' +
+      '<div class="ie-actions"><button class="ie-save">Guardar</button><button class="ie-cancel">Cancelar</button></div>';
+
+    if (meta) meta.style.display = 'none';
+    if (arrow) arrow.style.display = 'none';
+    if (handle) handle.style.display = 'none';
+    if (mapLink) mapLink.style.display = 'none';
+    if (menuBtn) menuBtn.style.display = 'none';
+    activity.appendChild(form);
+    const placeInput = form.querySelector('.ie-place');
+    placeInput.focus();
+    placeInput.select();
+
+    const close = () => {
+      form.remove();
+      if (meta) meta.style.display = '';
+      if (arrow) arrow.style.display = '';
+      if (handle) handle.style.display = '';
+      if (mapLink) mapLink.style.display = '';
+      if (menuBtn) menuBtn.style.display = '';
+      activity.classList.remove('editing');
+    };
+    const save = () => {
+      const newPlace = form.querySelector('.ie-place').value.trim();
+      const newNote = form.querySelector('.ie-note').value.trim();
+      if (!newPlace) { placeInput.focus(); return; }
+      const placeChanged = newPlace !== place;
+      const current = getActivityData(activity);
+      if (current) {
+        current.place = newPlace;
+        current.note = newNote;
+        if (placeChanged) current.dist = '';
+        saveData();
+      }
+      close();
+      renderDay(activity.dataset.day);
+      if (placeChanged) {
+        const newEl = document.querySelector('.activity[data-day="' + activity.dataset.day + '"][data-idx="' + activity.dataset.idx + '"]');
+        if (newEl) recalculateDistance(newEl);
+      }
+    };
+    form.querySelector('.ie-save').addEventListener('click', save);
+    form.querySelector('.ie-cancel').addEventListener('click', close);
+    placeInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); save(); }
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+    });
+    form.querySelector('.ie-note').addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+    });
+  }
+
+  /* ============= MENU POPOVER ============= */
+  function closeMenu() {
+    document.querySelectorAll('.menu-popover, .menu-backdrop').forEach(el => el.remove());
+  }
+  function openActivityMenu(menuBtn, activity) {
+    closeMenu();
+    const backdrop = document.createElement('div');
+    backdrop.className = 'menu-backdrop';
+    backdrop.addEventListener('click', closeMenu);
+    document.body.appendChild(backdrop);
+
+    const pop = document.createElement('div');
+    pop.className = 'menu-popover';
+    pop.innerHTML =
+      '<button class="menu-item" data-action="edit">' + PENCIL_SVG + '<span>Editar</span></button>' +
+      '<button class="menu-item danger" data-action="delete">' + TRASH_SVG + '<span>Eliminar</span></button>';
+    document.body.appendChild(pop);
+
+    const rect = menuBtn.getBoundingClientRect();
+    const popW = pop.offsetWidth;
+    let left = rect.right + window.scrollX - popW;
+    if (left < 8) left = 8;
+    let top = rect.bottom + window.scrollY + 4;
+    if (top + pop.offsetHeight > window.scrollY + window.innerHeight - 8) {
+      top = rect.top + window.scrollY - pop.offsetHeight - 4;
+    }
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+
+    pop.addEventListener('click', e => {
+      const item = e.target.closest('.menu-item');
+      if (!item) return;
+      const action = item.dataset.action;
+      closeMenu();
+      if (action === 'edit') startEditActivity(activity);
+      else if (action === 'delete') removeActivity(activity.dataset.day, parseInt(activity.dataset.idx, 10));
+    });
+  }
+
+  /* ============= DRAG & DROP (touch + mouse) ============= */
+  let dragState = null;
+
+  function startDrag(activity, pointerEvent) {
+    const container = activity.closest('.activities');
+    if (!container) return;
+    const rect = activity.getBoundingClientRect();
+    const clone = activity.cloneNode(true);
+    clone.classList.add('drag-clone');
+    clone.style.left = rect.left + 'px';
+    clone.style.top = rect.top + 'px';
+    clone.style.width = rect.width + 'px';
+    document.body.appendChild(clone);
+    activity.classList.add('dragging');
+    dragState = {
+      activity, container, clone,
+      offsetY: pointerEvent.clientY - rect.top,
+      offsetX: pointerEvent.clientX - rect.left,
+      pointerId: pointerEvent.pointerId
+    };
+    document.addEventListener('pointermove', onDragMove);
+    document.addEventListener('pointerup', onDragEnd);
+    document.addEventListener('pointercancel', onDragEnd);
+  }
+
+  function onDragMove(e) {
+    if (!dragState) return;
+    e.preventDefault();
+    const { activity, container, clone, offsetY, offsetX } = dragState;
+    clone.style.top = (e.clientY - offsetY) + 'px';
+    clone.style.left = (e.clientX - offsetX) + 'px';
+    const siblings = Array.from(container.children).filter(c => c !== activity && c.classList.contains('activity'));
+    for (const s of siblings) {
+      const r = s.getBoundingClientRect();
+      if (e.clientY >= r.top && e.clientY <= r.bottom) {
+        const mid = r.top + r.height / 2;
+        if (e.clientY < mid) container.insertBefore(activity, s);
+        else container.insertBefore(activity, s.nextSibling);
+        return;
+      }
+    }
+  }
+
+  function onDragEnd() {
+    if (!dragState) return;
+    const { activity, container, clone } = dragState;
+    clone.remove();
+    activity.classList.remove('dragging');
+    document.removeEventListener('pointermove', onDragMove);
+    document.removeEventListener('pointerup', onDragEnd);
+    document.removeEventListener('pointercancel', onDragEnd);
+    // Persist new order
+    const day = container.dataset.day;
+    if (day && data.days[day]) {
+      const newOrder = Array.from(container.children).map(el => {
+        const oldIdx = parseInt(el.dataset.idx, 10);
+        return data.days[day][oldIdx];
+      }).filter(Boolean);
+      data.days[day] = newOrder;
+      saveData();
+      renderDay(day);
+      // Recalculate distances for all items in the day (positions changed)
+      const newEls = document.querySelectorAll('.activity[data-day="' + day + '"]');
+      newEls.forEach(el => recalculateDistance(el));
+    }
+    dragState = null;
+  }
+
+  /* ============= GLOBAL EVENTS ============= */
+  document.addEventListener('pointerdown', e => {
+    const handle = e.target.closest('.drag-handle');
+    if (handle) {
+      const activity = handle.closest('.activity');
+      if (activity) {
+        e.preventDefault();
+        startDrag(activity, e);
+      }
+    }
+  });
+
+  document.addEventListener('click', e => {
+    /* Menu button on activity */
+    const menuBtn = e.target.closest('.menu-btn');
+    if (menuBtn) {
+      e.stopPropagation();
+      const activity = menuBtn.closest('.activity');
+      if (activity) openActivityMenu(menuBtn, activity);
+      return;
+    }
+    /* Edit button on entry */
+    const editBtn = e.target.closest('.edit-btn');
+    if (editBtn) {
+      e.stopPropagation();
+      const entry = editBtn.closest('.entry');
+      if (entry) startEditEntry(entry);
+      return;
+    }
+    /* Close menus when clicking outside */
+    if (!e.target.closest('.menu-popover')) closeMenu();
+  });
+
+  /* Add-row */
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      const form = document.querySelector('.add-row[data-form="' + target + '"]');
+      form.classList.add('open');
+      form.querySelector('.place').focus();
+    });
+  });
+  document.querySelectorAll('.add-row').forEach(form => {
+    const day = form.dataset.form;
+    const placeInput = form.querySelector('.place');
+    const noteInput = form.querySelector('.note');
+    const saveBtn = form.querySelector('.save-btn');
+    const cancelBtn = form.querySelector('.cancel-btn');
+    const close = () => { form.classList.remove('open'); placeInput.value = ''; noteInput.value = ''; };
+    saveBtn.addEventListener('click', () => {
+      const place = placeInput.value.trim();
+      const note = noteInput.value.trim();
+      if (!place) { placeInput.focus(); return; }
+      if (!data.days[day]) data.days[day] = [];
+      data.days[day].push({ dist: '', place, note });
+      const newIdx = data.days[day].length - 1;
+      saveData();
+      close();
+      renderDay(day);
+      const newEl = document.querySelector('.activity[data-day="' + day + '"][data-idx="' + newIdx + '"]');
+      if (newEl) recalculateDistance(newEl);
+    });
+    cancelBtn.addEventListener('click', close);
+    placeInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); noteInput.focus(); }
+      if (e.key === 'Escape') close();
+    });
+    noteInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') close();
+    });
+  });
+
+  /* ============= INIT ============= */
+  ensureSeeded();
+  initStaticIds();
+  applyEntryOverrides();
+  renderAll();
+
+  /* ============= PWA SERVICE WORKER ============= */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+    });
+  }
+</script>
+
+</body>
+</html>
