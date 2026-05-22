@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'puglia-v1';
+const CACHE_VERSION = 'puglia-v2';
 const CACHE_FILES = [
   './',
   './index.html',
@@ -28,21 +28,9 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  /* External APIs (Nominatim, OSRM, Google Maps, fonts): network-first, fall back to cache */
-  if (url.origin !== self.location.origin) {
-    e.respondWith(
-      fetch(e.request)
-        .then(r => {
-          if (r.ok) {
-            const copy = r.clone();
-            caches.open(CACHE_VERSION).then(c => c.put(e.request, copy));
-          }
-          return r;
-        })
-        .catch(() => caches.match(e.request))
-    );
-    return;
-  }
+  /* Don't intercept cross-origin requests (Nominatim, OSRM, Google Maps, fonts).
+     Letting the browser handle them avoids subtle CORS/cache issues. */
+  if (url.origin !== self.location.origin) return;
 
   /* HTML navigations: network-first so updates appear when online */
   if (e.request.mode === 'navigate' || e.request.destination === 'document') {

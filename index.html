@@ -198,6 +198,15 @@
     transition: background 0.15s;
   }
   .activity.dragging { opacity: 0.3; background: #f5f5f5; }
+  .activity.visited { background: #e6f4d7; }
+  .activity.visited .a-place { color: #3d6b1f; }
+  .activity.visited .a-place::after {
+    content: '✓';
+    display: inline-block;
+    margin-left: 6px;
+    color: #5a8a2a;
+    font-weight: 700;
+  }
   .activity.drag-clone {
     position: fixed !important;
     z-index: 1000;
@@ -233,6 +242,7 @@
   .activity-meta { flex: 1; min-width: 0; }
   .a-distance { font-size: 11px; color: var(--text-light); margin-bottom: 1px; }
   .a-distance.calculating { font-style: italic; opacity: 0.7; }
+  .a-distance.unavailable { font-style: italic; color: #c75450; opacity: 0.8; }
   .a-place { font-size: 13px; font-weight: 600; color: var(--text-dark); overflow: hidden; text-overflow: ellipsis; }
   .a-note {
     font-size: 11px;
@@ -305,6 +315,7 @@
   }
   .menu-item:hover, .menu-item:active { background: #f5f5f5; }
   .menu-item.danger { color: #e85b53; }
+  .menu-item.visited-action { color: #3d6b1f; }
   .menu-item svg { width: 14px; height: 14px; flex-shrink: 0; }
   .menu-backdrop {
     position: fixed;
@@ -642,6 +653,8 @@
   const GRIP_SVG = '<svg viewBox="0 0 8 14" fill="currentColor"><circle cx="2" cy="2" r="1.2"/><circle cx="6" cy="2" r="1.2"/><circle cx="2" cy="7" r="1.2"/><circle cx="6" cy="7" r="1.2"/><circle cx="2" cy="12" r="1.2"/><circle cx="6" cy="12" r="1.2"/></svg>';
   const TRASH_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M6 2h4a1 1 0 0 1 1 1v1h3v1h-1v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5H2V4h3V3a1 1 0 0 1 1-1zm1 2h2V3H7v1zM4 5v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V5H4zm2 2h1v6H6V7zm3 0h1v6H9V7z"/></svg>';
   const RESET_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 3V1L4 4l4 3V5a4 4 0 1 1-4 4H2.5a5.5 5.5 0 1 0 5.5-6z"/></svg>';
+  const CHECK_SVG = '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 3.5 6 11 2.5 7.5 1 9l5 5 9-9z"/></svg>';
+  const UNCHECK_SVG = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/></svg>';
 
   /* ============= STORAGE ============= */
   const STORAGE_KEY = 'puglia-roteiro-v3';
@@ -736,6 +749,12 @@
   }
 
   /* ============= GEOCODING & ROUTING ============= */
+  function fetchWithTimeout(url, opts, ms) {
+    const ctrl = new AbortController();
+    const id = setTimeout(() => ctrl.abort(), ms || 8000);
+    return fetch(url, Object.assign({ signal: ctrl.signal }, opts || {}))
+      .finally(() => clearTimeout(id));
+  }
   async function geocode(name) {
     const key = normalizeName(name);
     if (!key) return null;
@@ -744,7 +763,7 @@
     const tries = [cleaned, cleaned + ', Puglia, Italy', cleaned + ', Italy'];
     for (const q of tries) {
       try {
-        const res = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q), { headers: { 'Accept-Language': 'pt' } });
+        const res = await fetchWithTimeout('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q), { headers: { 'Accept-Language': 'pt' } });
         const j = await res.json();
         if (j && j.length) {
           const r = { lat: parseFloat(j[0].lat), lon: parseFloat(j[0].lon) };
@@ -752,17 +771,17 @@
           saveGeoCache();
           return r;
         }
-      } catch (e) {}
+      } catch (e) { console.warn('geocode failed for', q, e); }
     }
     return null;
   }
   async function getRoute(from, to) {
     try {
-      const res = await fetch('https://router.project-osrm.org/route/v1/driving/' + from.lon + ',' + from.lat + ';' + to.lon + ',' + to.lat + '?overview=false');
+      const res = await fetchWithTimeout('https://router.project-osrm.org/route/v1/driving/' + from.lon + ',' + from.lat + ';' + to.lon + ',' + to.lat + '?overview=false');
       const j = await res.json();
       if (!j.routes || !j.routes.length) return null;
       return { distance: j.routes[0].distance, duration: j.routes[0].duration };
-    } catch (e) { return null; }
+    } catch (e) { console.warn('OSRM route failed', e); return null; }
   }
   function formatRoute(route) {
     const km = route.distance / 1000;
@@ -858,46 +877,52 @@
     return null;
   }
 
+  function setActivityDistanceLabel(el, text, mode) {
+    /* mode: 'value' | 'calculating' | 'unavailable' | 'clear' */
+    const meta = el.querySelector('.activity-meta');
+    if (!meta) return;
+    let distEl = meta.querySelector('.a-distance');
+    if (mode === 'clear') { if (distEl) distEl.remove(); return; }
+    if (!distEl) {
+      distEl = document.createElement('div');
+      distEl.className = 'a-distance';
+      meta.insertBefore(distEl, meta.firstChild);
+    }
+    distEl.textContent = text;
+    distEl.classList.remove('calculating', 'unavailable');
+    if (mode === 'calculating') distEl.classList.add('calculating');
+    if (mode === 'unavailable') distEl.classList.add('unavailable');
+  }
   async function recalculateDistance(activityEl) {
     if (!activityEl) return;
     const placeEl = activityEl.querySelector('.a-place');
     if (!placeEl) return;
     const place = placeEl.textContent.trim();
     if (!place) return;
-    const distEl = activityEl.querySelector('.a-distance');
-    if (distEl) { distEl.textContent = 'A calcular distância…'; distEl.classList.add('calculating'); }
     const prev = findPreviousLocation(activityEl);
     if (!prev) {
-      if (distEl) distEl.remove();
+      setActivityDistanceLabel(activityEl, '', 'clear');
       const item = getActivityData(activityEl);
       if (item) { item.dist = ''; saveData(); }
       return;
     }
+    setActivityDistanceLabel(activityEl, 'A calcular distância…', 'calculating');
     try {
       const from = await geocode(prev);
       const to = await geocode(place);
-      if (!from || !to) throw new Error('geo');
+      if (!from || !to) throw new Error('geocode returned nothing');
       const route = await getRoute(from, to);
-      if (!route) throw new Error('route');
+      if (!route) throw new Error('OSRM returned no route');
       const dist = formatRoute(route);
-      updateActivityDistance(activityEl, dist);
+      setActivityDistanceLabel(activityEl, dist, 'value');
       const item = getActivityData(activityEl);
       if (item) { item.dist = dist; saveData(); }
     } catch (e) {
-      updateActivityDistance(activityEl, '');
+      console.warn('Distance calc failed for', place, 'from', prev, e);
+      setActivityDistanceLabel(activityEl, 'Distância indisponível', 'unavailable');
       const item = getActivityData(activityEl);
       if (item) { item.dist = ''; saveData(); }
     }
-  }
-  function updateActivityDistance(el, dist) {
-    const meta = el.querySelector('.activity-meta');
-    if (!meta) return;
-    let distEl = meta.querySelector('.a-distance');
-    if (dist) {
-      if (!distEl) { distEl = document.createElement('div'); distEl.className = 'a-distance'; meta.insertBefore(distEl, meta.firstChild); }
-      distEl.textContent = dist;
-      distEl.classList.remove('calculating');
-    } else if (distEl) distEl.remove();
   }
 
   /* ============= RENDER ============= */
@@ -908,7 +933,7 @@
     container.innerHTML = '';
     items.forEach((item, idx) => {
       const div = document.createElement('div');
-      div.className = 'activity';
+      div.className = 'activity' + (item.visited ? ' visited' : '');
       div.dataset.day = day;
       div.dataset.idx = idx;
       const distHtml = item.dist ? '<div class="a-distance">' + escapeHtml(item.dist) + '</div>' : '';
@@ -1094,9 +1119,15 @@
     backdrop.addEventListener('click', closeMenu);
     document.body.appendChild(backdrop);
 
+    const item = getActivityData(activity) || {};
+    const isVisited = !!item.visited;
+    const visitedLabel = isVisited ? 'Marcar como não visitado' : 'Marcar como visitado';
+    const visitedIcon = isVisited ? UNCHECK_SVG : CHECK_SVG;
+
     const pop = document.createElement('div');
     pop.className = 'menu-popover';
     pop.innerHTML =
+      '<button class="menu-item' + (isVisited ? '' : ' visited-action') + '" data-action="visited">' + visitedIcon + '<span>' + visitedLabel + '</span></button>' +
       '<button class="menu-item" data-action="edit">' + PENCIL_SVG + '<span>Editar</span></button>' +
       '<button class="menu-item danger" data-action="delete">' + TRASH_SVG + '<span>Eliminar</span></button>';
     document.body.appendChild(pop);
@@ -1113,12 +1144,20 @@
     pop.style.top = top + 'px';
 
     pop.addEventListener('click', e => {
-      const item = e.target.closest('.menu-item');
-      if (!item) return;
-      const action = item.dataset.action;
+      const mi = e.target.closest('.menu-item');
+      if (!mi) return;
+      const action = mi.dataset.action;
       closeMenu();
       if (action === 'edit') startEditActivity(activity);
       else if (action === 'delete') removeActivity(activity.dataset.day, parseInt(activity.dataset.idx, 10));
+      else if (action === 'visited') {
+        const it = getActivityData(activity);
+        if (it) {
+          it.visited = !it.visited;
+          saveData();
+          renderDay(activity.dataset.day);
+        }
+      }
     });
   }
 

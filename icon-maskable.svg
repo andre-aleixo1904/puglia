@@ -1,4 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#FEC437"/>
-  <text x="256" y="338" font-family="Georgia, 'Times New Roman', serif" font-size="260" font-weight="700" text-anchor="middle" fill="#FFFFFF">P</text>
+  <rect width="512" height="512" fill="#FFFFFF"/>
+  <!-- Italian flag scaled smaller for maskable safe zone -->
+  <g transform="translate(127, 150)">
+    <rect x="0"   y="0" width="86" height="172" fill="#009246"/>
+    <rect x="86"  y="0" width="86" height="172" fill="#FFFFFF"/>
+    <rect x="172" y="0" width="86" height="172" fill="#CE2B37"/>
+    <rect x="0"   y="0" width="258" height="172" fill="none" stroke="#D8D8D8" stroke-width="1"/>
+  </g>
+  <text x="256" y="378" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="700" text-anchor="middle" fill="#273240">Puglia</text>
 </svg>
