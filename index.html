@@ -64,6 +64,25 @@
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
+  .install-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 11px 20px;
+    border: none;
+    background: var(--text-dark);
+    color: var(--white);
+    border-radius: 24px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .install-btn:active { opacity: 0.9; }
+  .install-btn svg { width: 14px; height: 14px; }
+  .install-btn[hidden] { display: none; }
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
@@ -479,6 +498,10 @@
     </svg>
     <h1>Puglia</h1>
     <div class="dates">4 — 14 de Junho · Itália</div>
+    <button class="install-btn" id="installBtn" type="button" hidden>
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v8.59l3.3-3.3 1.4 1.42L8 12.42 3.3 7.71 4.7 6.3 7 8.59V1h1zM2 13h12v2H2v-2z"/></svg>
+      Instalar app
+    </button>
   </header>
 
   <div class="info-strip">
@@ -1318,6 +1341,31 @@
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
     });
   }
+
+  /* ============= PWA INSTALL BUTTON ============= */
+  let deferredInstallPrompt = null;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if (installBtn) installBtn.hidden = false;
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      try { await deferredInstallPrompt.userChoice; } catch (e) {}
+      deferredInstallPrompt = null;
+      installBtn.hidden = true;
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.hidden = true;
+    deferredInstallPrompt = null;
+  });
 </script>
 
 </body>
